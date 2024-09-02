@@ -14,7 +14,7 @@ python3.11 --version
 # Clone the private GitHub repository using PAT
 echo "Cloning the private GitHub repository..."
 GITHUB_PAT=""
-git clone https://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@github.com/arushi082/ChartMetric.git
+git clone https://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@github.com/arushi082/ChartMetric.git
 
 # # Navigate to the cloned repository directory
 # cd ChartMetric
