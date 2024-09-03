@@ -27,7 +27,7 @@ echo -e "\n$(date '+%T')\t Script Terminated"
 # Cloning the private GitHub repository using PAT
 echo "Cloning the private GitHub repository..."
 # GITHUB_PAT="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"
-REPO_URL= "https://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@github.com/sudarshan037/eventbrite_scraper.git"
+REPO_URL= "https://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@github.com/sudarshan037/eventbrite_scraper.git"
 git clone $REPO_URL
 
 if [ $? -eq 0 ]; then
