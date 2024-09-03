@@ -6,25 +6,31 @@
 echo "Starting the setup script..."
 
 # Installing Python 3.11
-echo "Installing Python 3.11..."
-sudo apt-get update -y
-sudo apt-get install -y software-properties-common
-sudo add-apt-repository ppa:deadsnakes/ppa -y
-sudo apt-get update -y
-sudo apt-get install -y python3.11 python3.11-venv python3.11-dev
+#!/bin/bash
 
-# Check Python version
-if python3.11 --version; then
-    echo "Python 3.11 installation successful."
-else
-    echo "Python 3.11 installation failed." >&2
-    exit 1
-fi
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt install python3.9 python3.9-venv
+echo -e "$(date '+%d-%m-%Y  %T')\nstarting update...\n"
+
+apt update
+apt -y upgrade
+apt -y dist-upgrade
+apt -y autoremove
+apt -y autoclean
+
+curl -fsSL https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/google_linux_signing_key.gpg
+echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/google_linux_signing_key.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
+sudo apt-get update
+sudo apt-get install -y google-chrome-stable
+
+mv ~/.wdm/drivers/chromedriver/linux64/128.0.6613.119/chromedriver-linux64/THIRD_PARTY_NOTICES.chromedriver ~/.wdm/drivers/chromedriver/linux64/128.0.6613.119/chromedriver-linux64/THIRD_PARTY_NOTICES.chromedriver.bak
+cp ~/.wdm/drivers/chromedriver/linux64/128.0.6613.119/chromedriver-linux64/chromedriver ~/.wdm/drivers/chromedriver/linux64/128.0.6613.119/chromedriver-linux64/THIRD_PARTY_NOTICES.chromedriver
+echo -e "\n$(date '+%T')\t Script Terminated"
 
 # Cloning the private GitHub repository using PAT
 echo "Cloning the private GitHub repository..."
-GITHUB_PAT="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"
-REPO_URL="https://${GITHUB_PAT}@github.com/arushi082/ChartMetric.git"
+# GITHUB_PAT="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"
+REPO_URL= "https://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@github.com/sudarshan037/eventbrite_scraper.git"
 git clone $REPO_URL
 
 if [ $? -eq 0 ]; then
