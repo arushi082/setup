@@ -1,15 +1,12 @@
 #!/bin/bash
 
-# Install Python 3.11
-#!/bin/bash
-
 echo "Starting the setup script..."
 
-# Installing Python 3.11
-#!/bin/bash
-
-sudo add-apt-repository ppa:deadsnakes/ppa
-sudo apt install python3.9 python3.9-venv
+# sudo add-apt-repository ppa:deadsnakes/ppa
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 6A755776
+echo "deb http://ppa.launchpad.net/deadsnakes/ppa/ubuntu $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/deadsnakes-ppa.list
+apt update
+apt install -y python3.9 python3.9-venv
 echo -e "$(date '+%d-%m-%Y  %T')\nstarting update...\n"
 
 apt update
@@ -20,8 +17,8 @@ apt -y autoclean
 
 curl -fsSL https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/google_linux_signing_key.gpg
 echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/google_linux_signing_key.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
-sudo apt-get update
-sudo apt-get install -y google-chrome-stable
+apt-get update
+apt-get install -y google-chrome-stable
 
 mv ~/.wdm/drivers/chromedriver/linux64/128.0.6613.119/chromedriver-linux64/THIRD_PARTY_NOTICES.chromedriver ~/.wdm/drivers/chromedriver/linux64/128.0.6613.119/chromedriver-linux64/THIRD_PARTY_NOTICES.chromedriver.bak
 cp ~/.wdm/drivers/chromedriver/linux64/128.0.6613.119/chromedriver-linux64/chromedriver ~/.wdm/drivers/chromedriver/linux64/128.0.6613.119/chromedriver-linux64/THIRD_PARTY_NOTICES.chromedriver
