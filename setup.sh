@@ -16,7 +16,7 @@ apt -y autoremove
 apt -y autoclean
 
 sudo rm -f /etc/apt/trusted.gpg.d/google_linux_signing_key.gpg
-curl -fsSL https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/google_linux_signing_key.gpg > /dev/null
+curl -fsSL https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/google_linux_signing_key.gpg
 echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/google_linux_signing_key.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
 apt-get update
 apt-get install -y google-chrome-stable
