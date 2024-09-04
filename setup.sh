@@ -23,6 +23,7 @@ apt-get install -y google-chrome-stable
 git clone https://github.com/sudarshan037/eventbrite_scraper.git
 
 cd eventbrite_scraper
+git checkout develop_v4
 python3.9 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
@@ -39,5 +40,19 @@ else
     echo "Failed to clone the repository." >&2
     exit 1
 fi
+cd eventbrite_scraper
+tmux new-session -d -s my_scraper_session "scrapy crawl events"
 
+scrapy crawl events
+
+# Check if the tmux session started successfully
+if [ $? -eq 0 ]; then
+    echo "Scrapy crawler started in tmux session 'my_scraper_session'."
+else
+    echo "Failed to start the Scrapy crawler in tmux." >&2
+    exit 1
+fi
+
+echo -e "\n$(date '+%T')\t Script Terminated"
+echo "Setup script completed successfully."
 echo "Setup script completed successfully."
