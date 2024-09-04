@@ -40,7 +40,7 @@ else
     echo "Failed to clone the repository." >&2
     exit 1
 fi
-cd eventbrite_scraper
+
 tmux new-session -d -s my_scraper_session "scrapy crawl events"
 
 scrapy crawl events
