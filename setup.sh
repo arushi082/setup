@@ -29,8 +29,8 @@ python3.9 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 
-mv ~/.wdm/drivers/chromedriver/linux64/128.0.6613.119/chromedriver-linux64/THIRD_PARTY_NOTICES.chromedriver ~/.wdm/drivers/chromedriver/linux64/128.0.6613.119/chromedriver-linux64/THIRD_PARTY_NOTICES.chromedriver.bak
-cp ~/.wdm/drivers/chromedriver/linux64/128.0.6613.119/chromedriver-linux64/chromedriver ~/.wdm/drivers/chromedriver/linux64/128.0.6613.119/chromedriver-linux64/THIRD_PARTY_NOTICES.chromedriver
+mv /home/adminuser/.wdm/drivers/chromedriver/linux64/128.0.6613.119/chromedriver-linux64/THIRD_PARTY_NOTICES.chromedriver /home/adminuser/.wdm/drivers/chromedriver/linux64/128.0.6613.119/chromedriver-linux64/THIRD_PARTY_NOTICES.chromedriver.bak
+cp /home/adminuser/.wdm/drivers/chromedriver/linux64/128.0.6613.119/chromedriver-linux64/chromedriver /home/adminuser/.wdm/drivers/chromedriver/linux64/128.0.6613.119/chromedriver-linux64/THIRD_PARTY_NOTICES.chromedriver
 echo -e "\n$(date '+%T')\t Script Terminated"
 
 
