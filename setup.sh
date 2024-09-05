@@ -42,7 +42,7 @@ else
     exit 1
 fi
 
-tmux new-session -d -s my_scraper_session "scrapy crawl events"
+# tmux new-session -d -s my_scraper_session "scrapy crawl events"
 
 scrapy crawl events
 
